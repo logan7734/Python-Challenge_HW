@@ -1,58 +1,61 @@
 import os
 import csv
-#####
-csv_path = os.path.join("budget_data.csv")
+
+#Join Current to csv file
+csv_path = os.path.join('budget_data.csv')
 
 #empty lists
 Months = []
-Profit_Losses = []
+Profit_Loss = []
 Profit_Change = []
-counter = 0
+count = 0
 
-
-with open (csv_path) as csvfile:
+#open csv
+with open (csv_path,'r') as csvfile:
+    #read 
     csvreader = csv.reader(csvfile, delimiter=',')
     #skip header
     csv_header = next(csvreader)
     #Loop over
     for row in csvreader:
-         #append to Months
+         #append Months
          Months.append(row[0])
-         #append to Profit_Losses 
-         Profit_Losses.append(int(row[1]))
+         #append to Profit_Loss
+         Profit_Loss.append(int(row[1]))
 
-for row in Profit_Losses:
-       if counter > 0:
-        value_1 = Profit_Losses[(counter - 1)]
-        value_2 = Profit_Losses[counter]
-        #Calculate Monthly_Change = month2 - month1 or value_2 - value_1
-        Monthly_Change = value_2 - value_1
+#Loop over 
+for row in Profit_Loss:
+    if count > 0:
+        #val_1: index prior to current row
+        val_1 = Profit_Loss[(count - 1)]
+        #val_2: is current iteration
+        val_2 = Profit_Loss[count]
+        #Calculate Monthly_Change = month2 - month1 or val_2 - val_1
+        Monthly_Change = val_2 - val_1
         #Append to Profit_Change
         Profit_Change.append(Monthly_Change)
-        counter = counter + 1
-else:
-    counter = counter + 1
+        #keep adding
+        count = count + 1
+    else:
+            count = count + 1
 
-#calculate net profits
-Net = sum(Profit_Losses)
+Net = sum(Profit_Loss)
 
-#Total Months
 Total_Months = len(Months)
 
-#Calculate Average Change
-Average_Change = round(sum(Profit_Change)/len(Months),2)
+Average_Change = round(sum(Profit_Change)/len(Profit_Change),2)
 
-#Greatest Increase
-Greatest_Increase = max(Profit_Losses)
-#Greatest Decrease
-Greatest_Decrease = min(Profit_Losses)
+Greatest_Increase = max(Profit_Loss)
+Greatest_Decrease = min(Profit_Loss)
 
-Increase = Profit_Losses.index(Greatest_Increase)
-Decrease = Profit_Losses.index(Greatest_Decrease)
 
-#Get the values at index_1 and index_2 in Months list
-Month_1 = Months[Increase]
-Month_2 = Months[Decrease]
+index_1 = Profit_Loss.index(Greatest_Increase)
+
+index_2 = Profit_Loss.index(Greatest_Decrease)
+
+
+Month_1 = Months[index_1]
+Month_2 = Months[index_2]
 
 #Initial print statements
 print("Financial Analysis")
@@ -70,7 +73,6 @@ print(f"Average Change: ${Average_Change}")
 #Print Greatest Increase and Greatest Decrease
 print(f"Greatest Increase in Profits: {Month_1} (${Greatest_Increase})")
 print(f"Greatest Decrease in Profits: {Month_2} (${Greatest_Decrease})")
-
 #csv
 output_path = os.path.join("solved.csv")
 
