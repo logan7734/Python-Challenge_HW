@@ -54,3 +54,20 @@ print("Winner: Khan")
 
 
 print("-------------------------")
+
+
+
+#now print to csv
+
+
+output_path = os.path.join("results.csv")
+
+with open(output_path, mode ='w', newline = '') as csvfile:
+    csvwriter = csv.writer(csvfile)
+
+    csvwriter.writerow(["Election Results " + str(Total_Votes)])
+    csvwriter.writerow(["Khan " + str(Khan_Perc) + "% " + str(Khan) + " Votes"])
+    csvwriter.writerow(["Correy " + str(Correy_Perc) + "% " + str(Correy) + " Votes"])
+    csvwriter.writerow(["Li " + str(Li_Perc) + "% " + str(Li) + " Votes"])
+    csvwriter.writerow(["O'Tooley " + str(OTooley_Perc) + "% " + str(OTooley) + " Votes"])
+    csvwriter.writerow(["Winner is Khan"])
