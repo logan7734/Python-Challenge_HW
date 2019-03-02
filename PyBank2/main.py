@@ -91,4 +91,3 @@ with open(output_path, mode ='w', newline = '') as csvfile:
 with open(output_path, 'r') as readfile:
     print(readfile.read())
 
-#all results are on csv
