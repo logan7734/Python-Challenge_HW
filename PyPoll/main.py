@@ -39,20 +39,18 @@ print("-------------------------")
 #print Total Votes
 print(f"Total Votes: {Total_Votes}")
 
-#print dotted line
 print("-------------------------")
 
-#print percentages of votes and Total Votes for each candidate
+#print results
 print(f"Khan: {Khan_Perc}00% ({Khan})")
 print(f"Correy: {Correy_Perc}00% ({Correy})")
 print(f"Li: {Li_Perc}00% ({Li})")
 print(f"O'Tooley: {OTooley_Perc}00% ({OTooley})")
 
-#print dotted line
 print("-------------------------")
 
 #print Winner
 print("Winner: Khan")
 
-#print dotted line
+
 print("-------------------------")
