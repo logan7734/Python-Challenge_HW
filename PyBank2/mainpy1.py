@@ -28,7 +28,7 @@ for row in Profit_Losses:
         #Calculate Monthly_Change = month2 - month1 or value_2 - value_1
         Monthly_Change = value_2 - value_1
         #Append to Profit_Change
-        Profit_Change.appendgit(Monthly_Change)
+        Profit_Change.append(Monthly_Change)
         counter = counter + 1
 else:
     counter = counter + 1
@@ -40,7 +40,7 @@ Net = sum(Profit_Losses)
 Total_Months = len(Months)
 
 #Calculate Average Change
-Average_Change = sum(Profit_Change)
+Average_Change = round(sum(Profit_Change)/len(Months),2)
 
 #Greatest Increase
 Greatest_Increase = max(Profit_Losses)
@@ -72,16 +72,19 @@ print(f"Greatest Increase in Profits: {Month_1} (${Greatest_Increase})")
 print(f"Greatest Decrease in Profits: {Month_2} (${Greatest_Decrease})")
 
 #csv
+output_path = os.path.join("solved.csv")
 
-#with open(output_dest, 'w') as writefile:
-    writefile.writelines('Financial Analysis\n')
-    writefile.writelines('----------------------------' + '\n')
-    writefile.writelines('Total Months: ' + str(Total_Months) + '\n')
-    writefile.writelines('Total Revenue: $' + str(Net) + '\n')
-    writefile.writelines('Average Revenue Change: $' + str(Average_Change) + '\n')
-    writefile.writelines('Greatest Increase in Revenue: ' + Month_1 + ' ($' + str(Greatest_Increase) + ')'+ '\n')
-    writefile.writelines('Greatest Decrease in Revenue: ' + Month_2 + ' ($' + str(Greatest_Decrease) + ')')
+with open(output_path, mode ='w', newline = '') as csvfile:
+    csvwriter = csv.writer(csvfile)
+
+    csvwriter.writerow(['Financial Analysis\n'])
+    csvwriter.writerow(['----------------------------' + '\n'])
+    csvwriter.writerow(['Total Months: ' + str(Total_Months) + '\n'])
+    csvwriter.writerow(['Total Revenue: $' + str(Net) + '\n'])
+    csvwriter.writerow(['Average Revenue Change: $' + str(Average_Change) + '\n'])
+    csvwriter.writerow(['Greatest Increase in Revenue: ' + Month_1 + ' ($' + str(Greatest_Increase) + ')'+ '\n'])
+    csvwriter.writerow(['Greatest Decrease in Revenue: ' + Month_2 + ' ($' + str(Greatest_Decrease) + ')'])
 
 #opens the output file in r mode and prints to terminal
-with open(output_dest, 'r') as readfile:
+with open(output_path, 'r') as readfile:
     print(readfile.read())
