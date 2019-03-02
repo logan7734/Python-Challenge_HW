@@ -74,7 +74,7 @@ print(f"Average Change: ${Average_Change}")
 print(f"Greatest Increase in Profits: {Month_1} (${Greatest_Increase})")
 print(f"Greatest Decrease in Profits: {Month_2} (${Greatest_Decrease})")
 #csv
-output_path = os.path.join("solved.csv")
+output_path = os.path.join("bank_solved.csv")
 
 with open(output_path, mode ='w', newline = '') as csvfile:
     csvwriter = csv.writer(csvfile)
@@ -90,3 +90,5 @@ with open(output_path, mode ='w', newline = '') as csvfile:
 #opens the output file in r mode and prints to terminal
 with open(output_path, 'r') as readfile:
     print(readfile.read())
+
+#all results are on csv
