@@ -9,7 +9,7 @@ num_votes = []
 candidates = []
 
 
-with open(csv_path, 'r') as csvfile:
+with open(csv_path) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
     for row in csvreader:
@@ -18,7 +18,7 @@ with open(csv_path, 'r') as csvfile:
         candidates.append(row[2])
 
 #Calculate Total Votes
-Total_Votes = len(list(num_votes)))
+Total_Votes = len(list(num_votes))
 
 #counting votes per candidate 
 Khan  = candidates.count("Khan")
@@ -27,7 +27,7 @@ Li = candidates.count("Li")
 OTooley = candidates.count("O'Tooley")
 
 #Calculate percentage of votes 
-Khan_Perc = round(((Khant/Total_Votes) * 100),3)
+Khan_Perc = round(((Khan/Total_Votes) * 100),3)
 Correy_Perc = round(((Correy/Total_Votes) * 100),3)
 Li_Perc = round(((Li/Total_Votes) * 100),3)
 OTooley_Perc = round(((OTooley/Total_Votes) * 100),3)

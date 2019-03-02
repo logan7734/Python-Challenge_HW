@@ -1,7 +1,7 @@
 import os
 import csv
 
-csv_path = os.path.join(current,'budget_data.csv')
+csv_path = os.path.join("budget_data.csv")
 
 #empty lists
 Months = []
@@ -10,7 +10,7 @@ Profit_Change = []
 counter = 0
 
 
-with open (csv_path,'r') as csvfile:
+with open (csv_path) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     #skip header
     csv_header = next(csvreader)
@@ -28,11 +28,10 @@ for row in Profit_Losses:
         #Calculate Monthly_Change = month2 - month1 or value_2 - value_1
         Monthly_Change = value_2 - value_1
         #Append to Profit_Change
-        Profit_Change.append(Monthly_Change)
-        #keep adding to get through all rows
+        Profit_Change.appendgit(Monthly_Change)
         counter = counter + 1
-    else:
-        counter = counter + 1
+else:
+    counter = counter + 1
 
 #calculate net profits
 Net = sum(Profit_Losses)
@@ -41,7 +40,7 @@ Net = sum(Profit_Losses)
 Total_Months = len(Months)
 
 #Calculate Average Change
-Average_Change = round(sum(Profit_Changes)/len(Profit_Changes),2)
+Average_Change = sum(Profit_Change)
 
 #Greatest Increase
 Greatest_Increase = max(Profit_Losses)
@@ -71,3 +70,18 @@ print(f"Average Change: ${Average_Change}")
 #Print Greatest Increase and Greatest Decrease
 print(f"Greatest Increase in Profits: {Month_1} (${Greatest_Increase})")
 print(f"Greatest Decrease in Profits: {Month_2} (${Greatest_Decrease})")
+
+#csv
+
+#with open(output_dest, 'w') as writefile:
+    writefile.writelines('Financial Analysis\n')
+    writefile.writelines('----------------------------' + '\n')
+    writefile.writelines('Total Months: ' + str(Total_Months) + '\n')
+    writefile.writelines('Total Revenue: $' + str(Net) + '\n')
+    writefile.writelines('Average Revenue Change: $' + str(Average_Change) + '\n')
+    writefile.writelines('Greatest Increase in Revenue: ' + Month_1 + ' ($' + str(Greatest_Increase) + ')'+ '\n')
+    writefile.writelines('Greatest Decrease in Revenue: ' + Month_2 + ' ($' + str(Greatest_Decrease) + ')')
+
+#opens the output file in r mode and prints to terminal
+with open(output_dest, 'r') as readfile:
+    print(readfile.read())
